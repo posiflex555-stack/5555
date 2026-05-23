@@ -178,7 +178,7 @@ function render(){
         ${Math.abs(net).toFixed(2)}
 
         <div class="netLabel">
-       ${net > 0 ? 'للسواق' : net < 0 ? 'على السواق' : 'متوازن'}
+       ${net > 0 ? 'للمطعم' : net < 0 ? ' اللسواق' : 'متوازن'}
         </div>
 
       </td>
@@ -241,7 +241,7 @@ if (currentNet >= 0) {
 netCell.innerHTML = `
   ${Math.abs(currentNet).toFixed(2)}
   <div class="netLabel">
-${currentNet > 0 ? 'للسواق' : currentNet < 0 ? 'على السواق' : 'متوازن'}
+${currentNet > 0 ? 'للمطعم' : currentNet < 0 ? ' اللسواق' : 'متوازن'}
   </div>
 `;
 
