@@ -178,7 +178,7 @@ function render(){
         ${Math.abs(net).toFixed(2)}
 
         <div class="netLabel">
-          ${net >= 0 ? 'للسواق' : 'على السواق'}
+          ${net >= 0 ? 'للمطعم اق' : 'اللسواق'}
         </div>
 
       </td>
