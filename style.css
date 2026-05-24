@@ -357,3 +357,20 @@ tfoot td{
     display:none
   }
 }
+.logoBox{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    overflow:hidden;
+    background:#d4b07a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+
+.logoBox img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
