@@ -374,3 +374,158 @@ tfoot td{
     height:100%;
     object-fit:cover;
 }
+/* =========================
+   الجداول الإضافية
+========================= */
+
+.small-tables{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  margin-top:20px;
+}
+
+.mini-card{
+  background:#fff;
+  border-radius:16px;
+  padding:12px;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.mini-card h3{
+  margin:0 0 10px;
+  font-size:20px;
+  text-align:center;
+}
+
+.mini-add{
+  display:grid;
+  grid-template-columns:1fr 120px 90px;
+  gap:6px;
+  margin-bottom:10px;
+}
+
+.mini-add input{
+  padding:8px;
+  border:1px solid #ddd;
+  border-radius:8px;
+}
+
+.mini-add button{
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  background:#1A1512;
+  color:#fff;
+}
+
+.incomeInput{
+  width:100%;
+  padding:6px;
+  text-align:center;
+  font-size:16px;
+  border:1px solid #ddd;
+  border-radius:6px;
+}
+
+.mini-card table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.mini-card th,
+.mini-card td{
+  border:1px solid #ddd;
+  padding:6px;
+  text-align:center;
+}
+
+.mini-card tfoot{
+  font-weight:bold;
+  background:#f5f5f5;
+}
+
+/* =========================
+   طباعة حرارية 80mm
+========================= */
+
+@media print{
+
+  body.thermal-print{
+    width:80mm;
+    background:#fff;
+  }
+
+  body.thermal-print .no-print,
+  body.thermal-print .controls,
+  body.thermal-print .actions{
+    display:none !important;
+  }
+
+  body.thermal-print .page{
+    width:78mm;
+    margin:0;
+    padding:2mm;
+  }
+
+  body.thermal-print .brand-card{
+    display:block;
+    text-align:center;
+  }
+
+  body.thermal-print .logoBox img{
+    width:55px;
+    height:55px;
+  }
+
+  body.thermal-print h2{
+    font-size:13px;
+    margin:4px 0;
+  }
+
+  body.thermal-print p{
+    margin:2px 0;
+    font-size:11px;
+  }
+
+  body.thermal-print table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:9px;
+  }
+
+  body.thermal-print th,
+  body.thermal-print td{
+    border:1px solid #000;
+    padding:2px;
+  }
+
+  body.thermal-print .summary{
+    display:block;
+  }
+
+  body.thermal-print .summary div{
+    border:1px solid #000;
+    margin-bottom:3px;
+    padding:3px;
+    font-size:10px;
+  }
+
+  body.thermal-print .small-tables{
+    display:block;
+  }
+
+  body.thermal-print .mini-card{
+    box-shadow:none;
+    border:none;
+    padding:0;
+    margin-top:10px;
+  }
+
+  body.thermal-print .mini-card h3{
+    font-size:12px;
+    border-top:1px dashed #000;
+    border-bottom:1px dashed #000;
+    padding:3px;
+  }
+}
