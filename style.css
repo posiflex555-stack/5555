@@ -789,3 +789,18 @@ tfoot td{
     font-size:13px;
   }
 }
+@media print {
+  /* إخفاء كل العناصر افتراضياً */
+  body > *:not(.print-income-only) {
+    display: none !important;
+  }
+
+  /* إظهار قسم إيراد التوصيل فقط عند تفعيل الكلاس */
+  body.print-income-only #deliveryIncomeSection {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+  }
+}
