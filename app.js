@@ -329,7 +329,7 @@ function renderDebts(){
     body.innerHTML += `
       <tr>
         <td>${escapeHtml(item.name)}</td>
-        <td>${money(item.amount)}</td>
+        <td><input type="number" value="${item.amount}" onchange="updateDebt(${index}, this.value)"></td>
         <td class="no-print">
           <button onclick="deleteDebt(${index})">حذف</button>
         </td>
@@ -459,4 +459,9 @@ function printIncomeOnly() {
   setTimeout(() => {
     document.body.classList.remove("print-income-only");
   }, 500);
+}
+function updateDebt(index, newValue) {
+  data.debts[index].amount = num(newValue);
+  renderDebts();
+  saveData();
 }
