@@ -657,12 +657,15 @@ tfoot td{
     font-size:10px;
   }
 
-  body.thermal-print table{
-    width:100%;
-    min-width:0;
-    border-collapse:collapse;
-    font-size:8px;
+    body.thermal-print table {
+    width: 100%;
+    min-width: 0;
+    border-collapse: collapse;
+    font-size: 7px;
+    transform: scale(0.9);
+    transform-origin: top center;
   }
+
 
   body.thermal-print th,
   body.thermal-print td{
