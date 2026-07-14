@@ -452,3 +452,11 @@ if("serviceWorker" in navigator){
 }
 
 render();
+/* دالة طباعة الإيراد فقط */
+function printIncomeOnly() {
+  document.body.classList.add("print-income-only");
+  window.print();
+  setTimeout(() => {
+    document.body.classList.remove("print-income-only");
+  }, 500);
+}
