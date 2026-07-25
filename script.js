@@ -150,7 +150,9 @@ function editDriver(index){
 
 function openDriver(index){
 
-    alert("سيتم فتح فاتورة السائق في المرحلة القادمة");
+    localStorage.setItem("currentDriver",index);
+
+    location.href="driver.html";
 
 }
 
