@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>إعدادات النظام</title>
+
+<link rel="manifest" href="manifest.json">
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<meta name="theme-color" content="#1565c0">
+
+</head>
+
+<body>
+
+<header class="invoice-header">
+
+<button class="back-btn" onclick="location.href='index.html'">
+
+⬅
+
+</button>
+
+<div>
+
+<h2>
+
+إعدادات المطعم
+
+</h2>
+
+<p>
+
+إدارة بيانات النظام
+
+</p>
+
+</div>
+
+<div>
+
+⚙️
+
+</div>
+
+</header>
+
+<main class="settings-page">
+
+<div class="card">
+
+<h3>
+
+🏪 بيانات المطعم
+
+</h3>
+<div class="form-group">
+
+<label for="restaurantName">
+
+اسم المطعم
+
+</label>
+
+<input
+type="text"
+id="restaurantName"
+placeholder="مثال: مطاعم ومطابخ سحايب ديرتي">
+
+</div>
+
+<div class="form-group">
+
+<label for="cashierPhone">
+
+رقم الكاشير (واتساب)
+
+</label>
+
+<input
+type="tel"
+id="cashierPhone"
+placeholder="05XXXXXXXX">
+
+</div>
+
+<div class="form-group">
+
+<label for="currency">
+
+العملة
+
+</label>
+
+<select id="currency">
+
+<option value="ر.س">ريال سعودي (ر.س)</option>
+
+<option value="د.ك">دينار كويتي (د.ك)</option>
+
+<option value="د.إ">درهم إماراتي (د.إ)</option>
+
+<option value="$">دولار ($)</option>
+
+</select>
+
+</div>
+
+<button
+id="saveSettingsBtn"
+class="primary-btn">
+
+💾 حفظ الإعدادات
+
+</button>
+
+</div>
+
+<!-- ====================== الشعار ====================== -->
+
+<div class="card">
+
+<h3>
+
+🖼️ شعار المطعم
+
+</h3>
+
+<input
+type="file"
+id="logoInput"
+accept="image/*">
+
+<div class="logo-preview">
+
+<img
+id="logoPreview"
+src=""
+alt="شعار المطعم">
+
+</div>
+
+</div>
+<!-- ====================== إدارة أصناف المنيو ====================== -->
+
+<div class="card">
+
+<h3>
+
+🍽️ إدارة أصناف المنيو
+
+</h3>
+
+<div class="menu-toolbar">
+
+<select id="menuCategory">
+
+<option value="chicken">🍗 الدجاج</option>
+
+<option value="edamat">🍲 الإيدامات</option>
+
+<option value="drinks">🥤 المشروبات</option>
+
+<option value="starters">🥗 المقبلات</option>
+
+</select>
+
+<button
+id="addItemBtn"
+class="green-btn">
+
+➕ إضافة صنف
+
+</button>
+
+</div>
+
+<div
+id="menuItemsList"
+class="menu-items-list">
+
+<!-- سيتم إنشاء الأصناف تلقائياً -->
+
+</div>
+
+</div>
+
+<!-- ====================== نافذة إضافة / تعديل صنف ====================== -->
+
+<div
+id="itemModal"
+class="modal">
+
+<div class="modal-box">
+
+<h3 id="itemModalTitle">
+
+إضافة صنف
+
+</h3>
+
+<div class="form-group">
+
+<label>
+
+اسم الصنف
+
+</label>
+
+<input
+type="text"
+id="itemName">
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+السعر
+
+</label>
+
+<input
+type="number"
+id="itemPrice"
+min="0"
+step="0.5">
+
+</div>
+
+<div class="modal-buttons">
+
+<button
+id="saveItemBtn"
+class="primary-btn">
+
+💾 حفظ
+
+</button>
+
+<button
+id="cancelItemBtn"
+class="gray-btn">
+
+إلغاء
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ====================== نافذة حذف صنف ====================== -->
+
+<div
+id="deleteItemModal"
+class="modal">
+
+<div class="modal-box">
+
+<h3>
+
+حذف الصنف
+
+</h3>
+
+<p>
+
+هل تريد حذف هذا الصنف؟
+
+</p>
+
+<div class="modal-buttons">
+
+<button
+id="confirmDeleteItemBtn"
+class="danger-btn">
+
+🗑 حذف
+
+</button>
+
+<button
+id="cancelDeleteItemBtn"
+class="gray-btn">
+
+إلغاء
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+<!-- ====================== رسالة الحفظ ====================== -->
+
+<div id="settingsToast" class="toast">
+
+✅ تم حفظ الإعدادات بنجاح
+
+</div>
+
+<!-- ====================== شاشة التحميل ====================== -->
+
+<div id="loadingScreen" class="loading-screen">
+
+<div class="loader"></div>
+
+<p>
+
+جاري تحميل الإعدادات...
+
+</p>
+
+</div>
+
+</main>
+
+<!-- ====================== ملفات JavaScript ====================== -->
+
+<script src="data.js"></script>
+
+<script src="settings.js"></script>
+
+<script>
+
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", () => {
+
+        navigator.serviceWorker.register("sw.js");
+
+    });
+
+}
+
+</script>
+
+</body>
+
+</html>
