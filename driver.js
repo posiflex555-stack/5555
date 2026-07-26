@@ -92,7 +92,7 @@ if (savedInvoice && savedInvoice.invoiceNumber) {
     invoiceNumber.textContent = generateInvoiceNumber();
 
 }
-
+}
 /*==================================================
         إنشاء أصناف المنيو
 ==================================================*/
