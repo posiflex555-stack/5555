@@ -364,11 +364,15 @@ return;
 
 }
 
-let message="";
+const settings = loadStorage(
+    STORAGE_KEYS.settings,
+    DEFAULT_SETTINGS
+);
 
-message+=APP.name+"\n";
+let message = "";
 
-message+="📋 جميع فواتير السواقين\n\n";
+message += settings.restaurantName + "\n";
+message += "📋 جميع فواتير السواقين\n\n";
 
 let grandTotal=0;
 
@@ -390,7 +394,7 @@ message+="━━━━━━━━━━━━━━\n";
 
 message+="💵 الإجمالي الكلي : "+formatPrice(grandTotal);
 
-const phone=(APP.cashierPhone||"").replace(/\D/g,"");
+const phone = (settings.cashierPhone || "").replace(/\D/g, "");
 
 if(phone===""){
 
