@@ -78,9 +78,21 @@ function loadCurrentDriver(){
 
     invoiceDate.textContent = currentDateTime();
 
+    const savedInvoice = loadStorage(
+    "invoice_" + currentDriver.id,
+    null
+);
+
+if (savedInvoice && savedInvoice.invoiceNumber) {
+
+    invoiceNumber.textContent = savedInvoice.invoiceNumber;
+
+} else {
+
     invoiceNumber.textContent = generateInvoiceNumber();
 
 }
+
 /*==================================================
         إنشاء أصناف المنيو
 ==================================================*/
