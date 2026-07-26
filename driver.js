@@ -269,7 +269,15 @@ function loadSavedInvoice() {
 
 if (invoices.length === 0) return;
 
-const invoice = invoices[invoices.length - 1];
+let invoice = JSON.parse(
+    localStorage.getItem("opened_invoice")
+);
+
+if (!invoice) {
+    invoice = invoices[invoices.length - 1];
+} else {
+    localStorage.removeItem("opened_invoice");
+};
     // الملاحظات
     notesInput.value = invoice.notes || "";
 
