@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>سجل الفواتير</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header class="invoice-header">
+
+<button class="back-btn" onclick="history.back()">
+⬅
+</button>
+
+<div>
+<h2>📚 سجل الفواتير</h2>
+<p id="driverName"></p>
+</div>
+
+</header>
+
+<main class="invoice-page">
+
+<div id="historyList"></div>
+
+</main>
+
+<script src="data.js"></script>
+<script src="invoice-history.js"></script>
+
+</body>
+</html>
