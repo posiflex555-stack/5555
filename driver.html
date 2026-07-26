@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>فاتورة السائق</title>
+
+<link rel="manifest" href="manifest.json">
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap"
+rel="stylesheet">
+
+<meta name="theme-color"
+content="#1565c0">
+
+</head>
+
+<body>
+
+<header class="invoice-header">
+
+<button
+class="back-btn"
+onclick="goBack()">
+
+⬅
+
+</button>
+
+<div>
+
+<h2 id="driverTitle">
+
+اسم السائق
+
+</h2>
+
+<p id="invoiceDate">
+
+--
+
+</p>
+
+</div>
+
+<div
+class="invoice-number">
+
+فاتورة
+
+<br>
+
+<span id="invoiceNumber">
+
+0001
+
+</span>
+
+</div>
+
+</header>
+
+<div class="total-card">
+
+<span>
+
+إجمالي الفاتورة
+
+</span>
+
+<h1 id="grandTotal">
+
+0 ر.س
+
+</h1>
+
+</div>
+
+<main class="invoice-page">
+ <!-- ====================== قسم الدجاج ====================== -->
+
+<section class="section">
+
+<div class="section-title" onclick="toggleSection(this)">
+
+🍗 الدجاج
+
+<span>▼</span>
+
+</div>
+
+<div class="section-content" id="chickenSection">
+
+</div>
+
+</section>
+
+<!-- ====================== قسم الإيدامات ====================== -->
+
+<section class="section">
+
+<div class="section-title" onclick="toggleSection(this)">
+
+🍲 الإيدامات
+
+<span>▼</span>
+
+</div>
+
+<div class="section-content" id="edamatSection">
+
+</div>
+
+</section>
+
+<!-- ====================== قسم المشروبات ====================== -->
+
+<section class="section">
+
+<div class="section-title" onclick="toggleSection(this)">
+
+🥤 المشروبات
+
+<span>▼</span>
+
+</div>
+
+<div class="section-content" id="drinksSection">
+
+</div>
+
+</section>
+
+<!-- ====================== قسم المقبلات ====================== -->
+
+<section class="section">
+
+<div class="section-title" onclick="toggleSection(this)">
+
+🥗 المقبلات
+
+<span>▼</span>
+
+</div>
+
+<div class="section-content" id="startersSection">
+
+</div>
+
+</section>
+
+<!-- ====================== الملاحظات ====================== -->
+
+<div class="notes-card">
+
+<label for="invoiceNotes">
+
+📝 ملاحظات
+
+</label>
+
+<textarea
+id="invoiceNotes"
+placeholder="اكتب أي ملاحظات على الفاتورة..."></textarea>
+
+</div>
+  <!-- ====================== شريط الأزرار ====================== -->
+
+<div class="invoice-actions">
+
+<button
+id="saveInvoiceBtn"
+class="primary-btn">
+
+💾 حفظ الفاتورة
+
+</button>
+
+<button
+id="whatsappBtn"
+class="green-btn">
+
+📱 إرسال واتساب
+
+</button>
+
+<button
+id="printInvoiceBtn"
+class="primary-btn">
+
+🖨️ طباعة
+
+</button>
+
+<button
+id="clearInvoiceBtn"
+class="danger-btn">
+
+🗑️ مسح الفاتورة
+
+</button>
+
+</div>
+
+</main>
+
+<!-- ====================== شريط الإجمالي السفلي ====================== -->
+
+<footer class="bottom-total">
+
+<div class="bottom-total-info">
+
+<span>الإجمالي النهائي</span>
+
+<strong id="bottomGrandTotal">
+
+0 ر.س
+
+</strong>
+
+</div>
+
+<button
+id="checkoutBtn"
+class="checkout-btn">
+
+✅ اعتماد الفاتورة
+
+</button>
+
+</footer>
+<!-- ====================== رسالة الحفظ ====================== -->
+
+<div id="saveToast" class="toast">
+
+✅ تم حفظ الفاتورة
+
+</div>
+
+<!-- ====================== شاشة التحميل ====================== -->
+
+<div id="loadingScreen" class="loading-screen">
+
+<div class="loader"></div>
+
+<p>جاري تحميل البيانات...</p>
+
+</div>
+
+<!-- ====================== ملفات JavaScript ====================== -->
+
+<script src="data.js"></script>
+
+<script src="driver.js"></script>
+
+<script>
+
+if("serviceWorker" in navigator){
+
+window.addEventListener("load",()=>{
+
+navigator.serviceWorker.register("sw.js");
+
+});
+
+}
+
+</script>
+
+</body>
+
+</html>
