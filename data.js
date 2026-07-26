@@ -358,10 +358,17 @@ JSON.stringify(value)
 // إنشاء رقم فاتورة
 function generateInvoiceNumber(){
 
-return "INV-" + Date.now();
+    const key = "invoice_counter";
+
+    let counter = Number(localStorage.getItem(key) || 0);
+
+    counter++;
+
+    localStorage.setItem(key, counter);
+
+    return "INV-" + String(counter).padStart(6, "0");
 
 }
-
 // تنسيق السعر
 function formatPrice(price){
 
