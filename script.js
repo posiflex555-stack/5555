@@ -368,16 +368,51 @@ let grandTotal=0;
 
 drivers.forEach(driver=>{
 
-message+="━━━━━━━━━━━━━━\n";
+message += "━━━━━━━━━━━━━━\n";
+message += "👤 " + driver.name + "\n";
+message += "📱 " + driver.phone + "\n\n";
 
-message+="👤 "+driver.name+"\n";
+const invoices = loadStorage(
+    "invoices_" + driver.id,
+    []
+);
 
-message+="📱 "+driver.phone+"\n";
+if (invoices.length === 0) {
 
-message+="💰 الإجمالي : "+formatPrice(driver.total||0)+"\n\n";
+    message += "لا توجد فواتير\n\n";
 
-grandTotal+=Number(driver.total||0);
+} else {
 
+    let driverTotal = 0;
+
+    invoices.forEach(invoice => {
+
+        message += "🧾 فاتورة رقم: " + invoice.invoiceNumber + "\n";
+        message += "📅 " + invoice.date + "\n";
+
+        invoice.items.forEach(item => {
+
+            message += "• " + item.name;
+            message += " × " + item.qty;
+            message += " = " + formatPrice(item.total) + "\n";
+
+        });
+
+        message += "💰 إجمالي الفاتورة: ";
+        message += formatPrice(invoice.total);
+        message += "\n\n";
+
+        driverTotal += Number(invoice.total || 0);
+
+    });
+
+    message += "🏆 إجمالي السائق: ";
+    message += formatPrice(driverTotal);
+    message += "\n\n";
+
+    grandTotal += driverTotal;
+
+}
 });
 
 message+="━━━━━━━━━━━━━━\n";
