@@ -26,7 +26,7 @@ const whatsappBtn = document.getElementById("whatsappBtn");
 const printBtn = document.getElementById("printInvoiceBtn");
 const clearBtn = document.getElementById("clearInvoiceBtn");
 const checkoutBtn = document.getElementById("checkoutBtn");
-
+const historyBtn = document.getElementById("historyBtn");
 const toast = document.getElementById("saveToast");
 const loadingScreen = document.getElementById("loadingScreen");
 
