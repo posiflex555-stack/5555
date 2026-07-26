@@ -253,19 +253,9 @@ driversList.appendChild(card);
 
 function openDriver(id){
 
-const driver = drivers.find(d=>d.id===id);
+    localStorage.setItem("current_driver_id", id);
 
-if(!driver) return;
-
-localStorage.setItem(
-
-"current_driver",
-
-JSON.stringify(driver)
-
-);
-
-location.href="driver.html";
+    location.href = "driver.html";
 
 }
 /*==================================================
