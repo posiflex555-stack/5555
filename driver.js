@@ -27,6 +27,11 @@ const printBtn = document.getElementById("printInvoiceBtn");
 const clearBtn = document.getElementById("clearInvoiceBtn");
 const checkoutBtn = document.getElementById("checkoutBtn");
 const historyBtn = document.getElementById("historyBtn");
+historyBtn.addEventListener("click", () => {
+
+    location.href = "invoice-history.html";
+
+});
 const toast = document.getElementById("saveToast");
 const loadingScreen = document.getElementById("loadingScreen");
 
