@@ -1195,3 +1195,135 @@ transform:scale(1.01);
 /*==================================================
         النهاية
 ==================================================*/
+/*==============================
+Toast
+==============================*/
+
+.toast{
+position:fixed;
+bottom:90px;
+left:50%;
+transform:translateX(-50%);
+background:#198754;
+color:#fff;
+padding:14px 24px;
+border-radius:12px;
+font-weight:700;
+opacity:0;
+visibility:hidden;
+transition:.3s;
+z-index:9999;
+box-shadow:0 6px 20px rgba(0,0,0,.2);
+}
+
+.toast.show{
+opacity:1;
+visibility:visible;
+}
+
+/*==============================
+Loading Screen
+==============================*/
+
+.loading-screen{
+position:fixed;
+inset:0;
+background:#fff;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:10000;
+}
+
+.loader{
+width:50px;
+height:50px;
+border:5px solid #e5e5e5;
+border-top:5px solid #0d6efd;
+border-radius:50%;
+animation:spin .8s linear infinite;
+margin-bottom:20px;
+}
+
+@keyframes spin{
+to{
+transform:rotate(360deg);
+}
+}
+
+/*==============================
+Settings
+==============================*/
+
+.settings-page{
+width:95%;
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.logo-preview{
+margin-top:20px;
+text-align:center;
+}
+
+.logo-preview img{
+max-width:180px;
+max-height:180px;
+border-radius:12px;
+display:block;
+margin:auto;
+}
+
+.menu-toolbar{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+flex-wrap:wrap;
+}
+
+.menu-toolbar select{
+flex:1;
+height:48px;
+border:1px solid #ddd;
+border-radius:10px;
+padding:10px;
+font-size:16px;
+}
+
+.menu-item-card{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#fff;
+padding:15px;
+border-radius:12px;
+margin-bottom:10px;
+box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.item-actions{
+display:flex;
+gap:8px;
+}
+
+/*==============================
+Checkout Button
+==============================*/
+
+.checkout-btn{
+background:#198754;
+color:#fff;
+border:none;
+padding:14px 24px;
+border-radius:12px;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+transition:.25s;
+}
+
+.checkout-btn:hover{
+background:#157347;
+}
