@@ -212,8 +212,6 @@ function autoSave() {
 
     const invoiceData = {
 
-        driverId: currentDriver.id,
-
         invoiceNumber: invoiceNumber.textContent,
 
         date: invoiceDate.textContent,
@@ -226,9 +224,28 @@ function autoSave() {
 
     };
 
-    localStorage.setItem(
-        "invoice_" + currentDriver.id,
-        JSON.stringify(invoiceData)
+    let invoices = loadStorage(
+        "invoices_" + currentDriver.id,
+        []
+    );
+
+    const index = invoices.findIndex(
+        inv => inv.invoiceNumber === invoiceData.invoiceNumber
+    );
+
+    if (index >= 0) {
+
+        invoices[index] = invoiceData;
+
+    } else {
+
+        invoices.push(invoiceData);
+
+    }
+
+    saveStorage(
+        "invoices_" + currentDriver.id,
+        invoices
     );
 
 }
@@ -240,14 +257,14 @@ function loadSavedInvoice() {
 
     if (!currentDriver) return;
 
-    const saved = localStorage.getItem(
-        "invoice_" + currentDriver.id
-    );
+    const invoices = loadStorage(
+    "invoices_" + currentDriver.id,
+    []
+);
 
-    if (!saved) return;
+if (invoices.length === 0) return;
 
-    const invoice = JSON.parse(saved);
-
+const invoice = invoices[invoices.length - 1];
     // الملاحظات
     notesInput.value = invoice.notes || "";
 
