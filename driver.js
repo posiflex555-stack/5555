@@ -43,28 +43,42 @@ let invoiceTotal = 0;
 //==============================
 // تحميل السائق الحالي
 //==============================
-
 function loadCurrentDriver(){
 
-const data = localStorage.getItem("current_driver");
+    const id = Number(localStorage.getItem("current_driver_id"));
 
-if(!data){
+    if(!id){
 
-alert("لم يتم اختيار سائق.");
+        alert("لم يتم اختيار سائق.");
 
-location.href = "index.html";
+        location.href = "index.html";
 
-return;
+        return;
 
-}
+    }
 
-currentDriver = JSON.parse(data);
+    const drivers = loadStorage(
+        STORAGE_KEYS.drivers,
+        []
+    );
 
-driverTitle.textContent = currentDriver.name;
+    currentDriver = drivers.find(driver => driver.id === id);
 
-invoiceDate.textContent = currentDateTime();
+    if(!currentDriver){
 
-invoiceNumber.textContent = generateInvoiceNumber();
+        alert("السائق غير موجود.");
+
+        location.href = "index.html";
+
+        return;
+
+    }
+
+    driverTitle.textContent = currentDriver.name;
+
+    invoiceDate.textContent = currentDateTime();
+
+    invoiceNumber.textContent = generateInvoiceNumber();
 
 }
 /*==================================================
