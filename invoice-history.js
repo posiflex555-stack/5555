@@ -56,7 +56,18 @@ if(invoices.length === 0){
         `;
 
         historyList.appendChild(card);
+const openBtn = card.querySelector("button");
 
+openBtn.addEventListener("click", () => {
+
+    localStorage.setItem(
+        "opened_invoice",
+        JSON.stringify(invoice)
+    );
+
+    location.href = "driver.html";
+
+});
     });
 
 }
