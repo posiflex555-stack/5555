@@ -447,6 +447,19 @@ checkoutBtn.addEventListener("click", () => {
     }
 
     alert("تم اعتماد الفاتورة بنجاح.");
+invoiceNumber.textContent = generateInvoiceNumber();
+
+document.querySelectorAll(".qty-input").forEach(input => {
+    input.value = 0;
+});
+
+notesInput.value = "";
+
+invoiceItems = [];
+invoiceTotal = 0;
+
+grandTotal.textContent = formatPrice(0);
+bottomGrandTotal.textContent = formatPrice(0);
 
 });
 /*==================================================
