@@ -3,7 +3,7 @@
    إدارة فواتير السواقين
 =========================================*/
 
-const CACHE_NAME = "drivers-pos-v1.0.0";
+const CACHE_NAME = "drivers-pos-v1.0.1";
 
 const urlsToCache = [
 
@@ -11,12 +11,13 @@ const urlsToCache = [
 "./index.html",
 "./driver.html",
 "./settings.html",
-
+"./invoice-history.html",
 "./style.css",
 
 "./script.js",
 "./driver.js",
 "./settings.js",
+  "./invoice-history.js", 
 "./data.js",
 
 "./manifest.json",
