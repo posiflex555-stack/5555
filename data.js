@@ -4,12 +4,6 @@
 
 const APP = {
 
-name: "مطاعم ومطابخ سحايب ديرتي",
-
-cashierPhone: "05XXXXXXXX",
-
-currency: "ريال",
-
 version: "1.0"
 
 };
@@ -371,7 +365,12 @@ return "INV-" + Date.now();
 // تنسيق السعر
 function formatPrice(price){
 
-return `${Number(price).toFixed(2)} ${APP.currency}`;
+const settings = loadStorage(
+    STORAGE_KEYS.settings,
+    DEFAULT_SETTINGS
+);
+
+return `${Number(price).toFixed(2)} ${settings.currency}`;
 
 }
 
