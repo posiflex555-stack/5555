@@ -309,3 +309,73 @@ searchDriver.addEventListener("input", function(){
     });
 
 });
+//==============================
+// تعديل اسم السائق
+//==============================
+
+document.addEventListener("dblclick", function(e){
+
+    const cell = e.target.closest("td");
+
+    if(!cell) return;
+
+    const row = cell.parentElement;
+
+    if(cell.cellIndex !== 0) return;
+
+    const index = row.rowIndex - 1;
+
+    const newName = prompt("تعديل اسم السائق", drivers[index].name);
+
+    if(!newName || newName.trim() === "") return;
+
+    drivers[index].name = newName.trim();
+
+    saveData();
+
+    renderTable();
+
+});
+//==============================
+// تحديث عدد أيام الشهر
+//==============================
+
+function updateMonthDays(){
+
+    const month = Number(document.getElementById("month").value);
+
+    const year = Number(yearSelect.value);
+
+    const daysInMonth = new Date(year, month, 0).getDate();
+
+    document.querySelectorAll("#driversTable tr").forEach(row=>{
+
+        for(let i=1;i<=31;i++){
+
+            const cell = row.cells[i];
+
+            if(!cell) continue;
+
+            cell.style.display = i <= daysInMonth ? "" : "none";
+
+        }
+
+    });
+
+}
+// تغيير الشهر
+document.getElementById("month").addEventListener("change",()=>{
+
+    updateMonthDays();
+
+});
+
+// تغيير السنة
+yearSelect.addEventListener("change",()=>{
+
+    updateMonthDays();
+
+});
+
+// تشغيل أول مرة
+setTimeout(updateMonthDays,100);
