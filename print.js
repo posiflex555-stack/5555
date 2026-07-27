@@ -6,7 +6,9 @@
 //==============================
 // طباعة A4
 //==============================
+const print80Btn = document.getElementById("print80Btn");
 
+print80Btn.addEventListener("click", print80);
 printA4Btn.addEventListener("click", printA4);
 
 function printA4(){
