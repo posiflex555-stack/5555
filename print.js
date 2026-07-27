@@ -411,3 +411,343 @@ function print80(){
     alert("طباعة 80mm");
 
 }
+//=====================================
+// طباعة حرارية 80mm
+//=====================================
+
+function print80(){
+
+const monthSelect=document.getElementById("month");
+
+const year=document.getElementById("year").value;
+
+const monthName=
+monthSelect.options[monthSelect.selectedIndex].text;
+
+const monthNumber=
+Number(monthSelect.value);
+
+const daysInMonth=
+new Date(year,monthNumber,0).getDate();
+
+let totalMeatAll=0;
+
+let totalOrdersAll=0;
+
+let html=`
+
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>طباعة حرارية</title>
+
+<style>
+
+@page{
+
+size:80mm auto;
+
+margin:0;
+
+}
+
+html,body{
+
+width:80mm;
+
+margin:0;
+
+padding:0;
+
+font-family:Cairo,Tahoma,Arial;
+
+}
+
+body{
+
+padding:2mm;
+
+zoom:1.20;
+
+}
+
+h2{
+
+margin:0;
+
+text-align:center;
+
+font-size:16px;
+
+}
+
+h3{
+
+margin:4px 0;
+
+text-align:center;
+
+font-size:13px;
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+th,td{
+
+border:1px solid #000;
+
+font-size:6px;
+
+padding:1px;
+
+text-align:center;
+
+}
+
+.driver{
+
+font-weight:bold;
+
+width:45px;
+
+}
+
+.sum{
+
+font-weight:bold;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>
+
+مطاعم ومطابخ سحايب ديرتي
+
+</h2>
+
+<h3>
+
+كشف السواقين
+
+</h3>
+
+<h3>
+
+${monthName} ${year}
+
+</h3>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th class="driver">
+
+السائق
+
+</th>
+for(let day=1;day<=daysInMonth;day++){
+
+html+=`
+
+<th>
+
+${day}
+
+</th>
+
+`;
+
+}
+
+html+=`
+
+<th class="sum">
+
+🥩
+
+</th>
+
+<th class="sum">
+
+🛵
+
+</th>
+
+<th class="sum">
+
+💰
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+`;
+
+drivers.forEach(driver=>{
+
+let meatTotal=0;
+
+let ordersTotal=0;
+
+html+=`
+
+<tr>
+
+<td class="driver">
+
+${driver.name}
+
+</td>
+
+`;
+
+for(let day=0;day<daysInMonth;day++){
+
+const d=driver.days[day]||{};
+
+const meat=Number(d.meat||0);
+
+const orders=Number(d.orders||0);
+
+meatTotal+=meat;
+
+ordersTotal+=orders;
+
+html+=`
+
+<td>
+
+${meat}<br>${orders}
+
+</td>
+
+`;
+
+}
+
+totalMeatAll+=meatTotal;
+
+totalOrdersAll+=ordersTotal;
+
+html+=`
+
+<td class="sum">
+
+${meatTotal.toFixed(0)}
+
+</td>
+
+<td class="sum">
+
+${ordersTotal.toFixed(0)}
+
+</td>
+
+<td class="sum">
+
+${(meatTotal+ordersTotal).toFixed(0)}
+
+</td>
+
+</tr>
+
+`;
+
+});
+html+=`
+
+<tr>
+
+<td class="sum">
+
+الإجمالي
+
+</td>
+
+`;
+
+for(let day=1;day<=daysInMonth;day++){
+
+html+=`
+
+<td>
+
+-
+
+</td>
+
+`;
+
+}
+
+html+=`
+
+<td class="sum">
+
+${totalMeatAll.toFixed(0)}
+
+</td>
+
+<td class="sum">
+
+${totalOrdersAll.toFixed(0)}
+
+</td>
+
+<td class="sum">
+
+${(totalMeatAll+totalOrdersAll).toFixed(0)}
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</body>
+
+</html>
+
+`;
+
+const win=window.open("","_blank");
+
+win.document.write(html);
+
+win.document.close();
+
+win.focus();
+
+setTimeout(()=>{
+
+win.print();
+
+},500);
+
+}
