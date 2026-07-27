@@ -10,7 +10,8 @@
 const driversBody = document.getElementById("driversBody");
 const yearSelect = document.getElementById("year");
 const addDriverBtn = document.getElementById("addDriverBtn");
-
+const printBtn = document.getElementById("printBtn");
+const printA4Btn = document.getElementById("printA4Btn");
 const dayModal = document.getElementById("dayModal");
 const modalTitle = document.getElementById("modalTitle");
 
