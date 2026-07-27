@@ -81,11 +81,25 @@ th{
 
 <h3>الشهر : ${monthName} / ${year}</h3>
 
+html += `
+
 <table>
+
+<thead>
 
 <tr>
 
-<th>السائق</th>
+<th style="min-width:120px">السائق</th>
+
+`;
+
+for(let day=1; day<=31; day++){
+
+    html += `<th>${day}</th>`;
+
+}
+
+html += `
 
 <th>🥩 الذبائح</th>
 
@@ -94,6 +108,11 @@ th{
 <th>💰 الإجمالي</th>
 
 </tr>
+
+</thead>
+
+<tbody>
+
 `;
 
     drivers.forEach(driver=>{
@@ -108,19 +127,35 @@ th{
 
         });
 
-        html += `
-<tr>
+        html += `<tr>`;
 
-<td>${driver.name}</td>
+html += `<td>${driver.name}</td>`;
 
-<td>${meat.toFixed(2)}</td>
+// بيانات الأيام
+driver.days.forEach(day=>{
 
-<td>${orders.toFixed(2)}</td>
+    html += `
+    <td style="font-size:9px;line-height:1.3">
 
-<td>${(meat+orders).toFixed(2)}</td>
+    ذ:${day.meat || ""}
 
-</tr>
-`;
+    <br>
+
+    ط:${day.orders || ""}
+
+    </td>
+    `;
+
+});
+
+// المجاميع
+html += `<td>${meat.toFixed(2)}</td>`;
+
+html += `<td>${orders.toFixed(2)}</td>`;
+
+html += `<td>${(meat+orders).toFixed(2)}</td>`;
+
+html += `</tr>`;
 
     });
 
