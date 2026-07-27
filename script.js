@@ -198,6 +198,8 @@ function renderTable(){
 
     });
 
+    updateDashboard();
+
 }
 //==============================
 // إضافة سائق
