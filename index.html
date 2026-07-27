@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>إدارة السواقين | مطاعم ومطابخ سحايب ديرتي</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo">
+
+<h1>مطاعم ومطابخ سحايب ديرتي</h1>
+
+<p>برنامج تصفية السواقين</p>
+
+</div>
+
+<div class="toolbar">
+
+<select id="month">
+<option value="1">يناير</option>
+<option value="2">فبراير</option>
+<option value="3">مارس</option>
+<option value="4">أبريل</option>
+<option value="5">مايو</option>
+<option value="6">يونيو</option>
+<option value="7" selected>يوليو</option>
+<option value="8">أغسطس</option>
+<option value="9">سبتمبر</option>
+<option value="10">أكتوبر</option>
+<option value="11">نوفمبر</option>
+<option value="12">ديسمبر</option>
+</select>
+
+<select id="year"></select>
+
+<input
+type="text"
+id="searchDriver"
+placeholder="🔍 البحث عن سائق">
+
+<button id="addDriverBtn">
+➕ إضافة سائق
+</button>
+
+<button id="printBtn">
+🖨️ طباعة
+</button>
+
+</div>
+
+</header>
+
+<div class="table-wrapper">
+
+<table id="driversTable">
+
+<thead>
+
+<tr>
+
+<th class="driver-name">السائق</th>
+
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+<th>16</th>
+<th>17</th>
+<th>18</th>
+<th>19</th>
+<th>20</th>
+<th>21</th>
+<th>22</th>
+<th>23</th>
+<th>24</th>
+<th>25</th>
+<th>26</th>
+<th>27</th>
+<th>28</th>
+<th>29</th>
+<th>30</th>
+<th>31</th>
+
+<th class="sum">🥩 الذبائح</th>
+
+<th class="sum">🛵 الطلبات</th>
+
+<th class="sum">💰 الإجمالي</th>
+
+<th>⚙️</th>
+
+</tr>
+
+</thead>
+
+<tbody id="driversBody">
+
+<!-- سيتم إنشاء السواقين بالجافاسكربت -->
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- نافذة إدخال البيانات -->
+
+<div id="dayModal" class="modal">
+
+<div class="modal-box">
+
+<h2 id="modalTitle">
+
+اليوم
+
+</h2>
+
+<label>
+
+🥩 قيمة الذبائح
+
+<input
+type="number"
+step="0.01"
+id="meatValue">
+
+</label>
+
+<label>
+
+🛵 قيمة الطلبات
+
+<input
+type="number"
+step="0.01"
+id="orderValue">
+
+</label>
+
+<label>
+
+📝 ملاحظات
+
+<textarea
+id="notes">
+</textarea>
+
+</label>
+
+<div class="modal-buttons">
+
+<button id="saveDay">
+
+💾 حفظ
+
+</button>
+
+<button id="closeModal">
+
+❌ إغلاق
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
