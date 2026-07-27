@@ -123,8 +123,9 @@ function renderTable(){
 
                 drivers.splice(index,1);
 
-                renderTable();
+saveData();
 
+renderTable();
             }
 
         };
@@ -148,12 +149,12 @@ addDriverBtn.onclick=function(){
 
     drivers.push(createDriver(name));
 
-    renderTable();
+saveData();
 
-};
+renderTable();
 
 // أول سائق تجريبي
-drivers.push(createDriver("فؤاد"));
+loadData();
 
 renderTable();
 // ===============================
