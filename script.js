@@ -290,3 +290,22 @@ closeModal.onclick = function(){
     dayModal.style.display = "none";
 
 };
+//==============================
+// البحث عن السائق
+//==============================
+
+const searchDriver = document.getElementById("searchDriver");
+
+searchDriver.addEventListener("input", function(){
+
+    const text = this.value.trim().toLowerCase();
+
+    document.querySelectorAll("#driversBody tr").forEach(row=>{
+
+        const driverName = row.cells[0].textContent.toLowerCase();
+
+        row.style.display = driverName.includes(text) ? "" : "none";
+
+    });
+
+});
