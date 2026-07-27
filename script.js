@@ -232,3 +232,61 @@ if(drivers.length === 0){
 }
 
 renderTable();
+
+//==============================
+// فتح نافذة إدخال اليوم
+//==============================
+
+document.addEventListener("click",function(e){
+
+    const cell = e.target.closest(".day");
+
+    if(!cell) return;
+
+    currentDriver = Number(cell.dataset.driver);
+    currentDay = Number(cell.dataset.day);
+
+    const data = drivers[currentDriver].days[currentDay];
+
+    modalTitle.textContent = "اليوم " + (currentDay + 1);
+
+    meatValue.value = data.meat || "";
+    orderValue.value = data.orders || "";
+    notes.value = data.notes || "";
+
+    dayModal.style.display = "flex";
+
+});
+
+//==============================
+// حفظ بيانات اليوم
+//==============================
+
+saveDay.onclick = function(){
+
+    drivers[currentDriver].days[currentDay].meat =
+        parseFloat(meatValue.value) || 0;
+
+    drivers[currentDriver].days[currentDay].orders =
+        parseFloat(orderValue.value) || 0;
+
+    drivers[currentDriver].days[currentDay].notes =
+        notes.value;
+
+    saveData();
+
+    dayModal.style.display = "none";
+
+    renderTable();
+
+};
+
+//==============================
+// إغلاق النافذة
+//==============================
+
+closeModal.onclick = function(){
+
+    dayModal.style.display = "none";
+
+};
