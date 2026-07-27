@@ -5,7 +5,7 @@
 const driversBody = document.getElementById("driversBody");
 const yearSelect = document.getElementById("year");
 const addDriverBtn = document.getElementById("addDriverBtn");
-
+const STORAGE_KEY = "deerty_driver_monthly_v1";
 // إنشاء السنوات
 const currentYear = new Date().getFullYear();
 
@@ -219,3 +219,37 @@ closeModal.onclick = function(){
     dayModal.style.display = "none";
 
 };
+//==============================
+// حفظ البيانات
+//==============================
+
+function saveData(){
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(drivers)
+    );
+
+}
+
+//==============================
+// تحميل البيانات
+//==============================
+
+function loadData(){
+
+    const data = localStorage.getItem(STORAGE_KEY);
+
+    if(data){
+
+        drivers = JSON.parse(data);
+
+    }else{
+
+        drivers = [
+            createDriver("فؤاد")
+        ];
+
+    }
+
+}
