@@ -205,10 +205,11 @@ saveDay.onclick = function(){
         notes.value;
 
 dayModal.style.display = "none";
-
 saveData();
 
 renderTable();
+
+};   // ← هذا السطر كان ناقص
 
 // إغلاق
 closeModal.onclick = function(){
@@ -233,23 +234,6 @@ function saveData(){
 // تحميل البيانات
 //==============================
 
-function loadData(){
-
-    const data = localStorage.getItem(STORAGE_KEY);
-
-    if(data){
-
-        drivers = JSON.parse(data);
-
-    }else{
-
-        drivers = [
-            createDriver("فؤاد")
-        ];
-
-    }
-
-}
 function loadData(){
 
     const data = localStorage.getItem(STORAGE_KEY);
