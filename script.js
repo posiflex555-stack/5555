@@ -379,3 +379,34 @@ yearSelect.addEventListener("change",()=>{
 
 // تشغيل أول مرة
 setTimeout(updateMonthDays,100);
+//==============================
+// تحديث الإحصائيات
+//==============================
+
+function updateDashboard(){
+
+    let meat = 0;
+    let orders = 0;
+
+    drivers.forEach(driver=>{
+
+        driver.days.forEach(day=>{
+
+            meat += Number(day.meat);
+
+            orders += Number(day.orders);
+
+        });
+
+    });
+
+    document.getElementById("driversCount").textContent = drivers.length;
+
+    document.getElementById("totalMeat").textContent = meat.toFixed(2);
+
+    document.getElementById("totalOrders").textContent = orders.toFixed(2);
+
+    document.getElementById("grandTotal").textContent =
+        (meat + orders).toFixed(2);
+
+}
