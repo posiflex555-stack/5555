@@ -152,11 +152,7 @@ addDriverBtn.onclick=function(){
 saveData();
 
 renderTable();
-
-// أول سائق تجريبي
-loadData();
-
-renderTable();
+};
 // ===============================
 // فتح نافذة الإدخال
 // ===============================
@@ -208,11 +204,11 @@ saveDay.onclick = function(){
     drivers[currentDriver].days[currentDay].notes =
         notes.value;
 
-    dayModal.style.display = "none";
+dayModal.style.display = "none";
 
-    renderTable();
+saveData();
 
-};
+renderTable();
 
 // إغلاق
 closeModal.onclick = function(){
@@ -254,3 +250,24 @@ function loadData(){
     }
 
 }
+function loadData(){
+
+    const data = localStorage.getItem(STORAGE_KEY);
+
+    if(data){
+
+        drivers = JSON.parse(data);
+
+    }else{
+
+        drivers = [
+            createDriver("فؤاد")
+        ];
+
+    }
+
+}
+
+loadData();
+
+renderTable();
