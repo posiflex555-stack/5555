@@ -156,3 +156,66 @@ addDriverBtn.onclick=function(){
 drivers.push(createDriver("فؤاد"));
 
 renderTable();
+// ===============================
+// فتح نافذة الإدخال
+// ===============================
+
+const dayModal = document.getElementById("dayModal");
+const modalTitle = document.getElementById("modalTitle");
+
+const meatValue = document.getElementById("meatValue");
+const orderValue = document.getElementById("orderValue");
+const notes = document.getElementById("notes");
+
+const saveDay = document.getElementById("saveDay");
+const closeModal = document.getElementById("closeModal");
+
+let currentDriver = -1;
+let currentDay = -1;
+
+// عند الضغط على أي يوم
+document.addEventListener("click", function(e){
+
+    if(!e.target.closest(".day")) return;
+
+    const cell = e.target.closest(".day");
+
+    currentDriver = Number(cell.dataset.driver);
+    currentDay = Number(cell.dataset.day);
+
+    const data = drivers[currentDriver].days[currentDay];
+
+    modalTitle.textContent = "اليوم " + (currentDay + 1);
+
+    meatValue.value = data.meat;
+    orderValue.value = data.orders;
+    notes.value = data.notes;
+
+    dayModal.style.display = "flex";
+
+});
+
+// حفظ
+saveDay.onclick = function(){
+
+    drivers[currentDriver].days[currentDay].meat =
+        parseFloat(meatValue.value) || 0;
+
+    drivers[currentDriver].days[currentDay].orders =
+        parseFloat(orderValue.value) || 0;
+
+    drivers[currentDriver].days[currentDay].notes =
+        notes.value;
+
+    dayModal.style.display = "none";
+
+    renderTable();
+
+};
+
+// إغلاق
+closeModal.onclick = function(){
+
+    dayModal.style.display = "none";
+
+};
