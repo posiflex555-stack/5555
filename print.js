@@ -35,7 +35,7 @@ function printA4(){
 
 <meta charset="UTF-8">
 
-<title>كشف السواقين</title>
+<title>كشف نسبة السواقين</title>
 
 <style>
 
@@ -168,7 +168,7 @@ tfoot td{
 
 <h2>
 
-كشف السواقين الشهري
+كشف نسبة السواقين الشهري
 
 </h2>
 
