@@ -125,7 +125,8 @@ function renderTable(){
 
         // اسم السائق
         const tdName = document.createElement("td");
-        tdName.textContent = driver.name;
+tdName.className = "driver-name";
+tdName.textContent = driver.name;
         tr.appendChild(tdName);
 
         let meatTotal = 0;
