@@ -350,3 +350,25 @@ MODAL
     font-weight:bold;
 
 }
+/* تثبيت اسم السائق على الشاشة فقط */
+@media screen {
+
+.driver-name{
+    position: sticky;
+    right: 0;
+    background: #fff;
+    z-index: 100;
+    min-width: 140px;
+    font-weight: bold;
+}
+
+}
+/* إلغاء التثبيت عند الطباعة */
+@media print {
+
+.driver-name{
+    position: static !important;
+    box-shadow: none !important;
+}
+
+}
