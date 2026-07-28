@@ -10,8 +10,9 @@
 const driversBody = document.getElementById("driversBody");
 const yearSelect = document.getElementById("year");
 const addDriverBtn = document.getElementById("addDriverBtn");
-const printBtn = document.getElementById("printBtn");
+const print80Btn = document.getElementById("print80Btn");
 const printA4Btn = document.getElementById("printA4Btn");
+const clearDataBtn = document.getElementById("clearDataBtn");
 const dayModal = document.getElementById("dayModal");
 const modalTitle = document.getElementById("modalTitle");
 
@@ -414,3 +415,31 @@ function updateDashboard(){
         (meat + orders).toFixed(2);
 
 }
+//==============================
+// تصفير بيانات الشهر
+//==============================
+
+clearDataBtn.onclick = function(){
+
+    if(!confirm("هل تريد تصفير جميع بيانات الشهر؟")){
+        return;
+    }
+
+    drivers.forEach(driver=>{
+
+        driver.days.forEach(day=>{
+
+            day.meat = 0;
+            day.orders = 0;
+            day.notes = "";
+
+        });
+
+    });
+
+    saveData();
+    renderTable();
+
+    alert("✅ تم تصفير جميع بيانات الشهر");
+
+};
