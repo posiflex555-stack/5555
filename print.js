@@ -406,11 +406,7 @@ printWindow.document.write(html);
 printWindow.document.close();
 
 }
-function print80(){
 
-    alert("طباعة 80mm");
-
-}
 //=====================================
 // طباعة حرارية 80mm
 //=====================================
