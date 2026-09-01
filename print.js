@@ -88,15 +88,55 @@ td{
     padding:3px;
     font-size:10px;
 }
+*{
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    margin:0;
+    padding:0;
+}
 
 .driver{
-    min-width:110px;
+    width:75px;
+    min-width:75px;
+    max-width:75px;
     font-weight:bold;
+    white-space:nowrap;
+    overflow:hidden;
 }
 
 .day{
-    width:34px;
-    line-height:1.2;
+    width:24px;
+    min-width:24px;
+    max-width:24px;
+    line-height:1.1;
+}
+
+table{
+    width:100%;
+    max-width:100%;
+    table-layout:fixed;
+    border-collapse:collapse;
+}
+
+th,
+td{
+    border:1px solid #000;
+    text-align:center;
+    vertical-align:middle;
+    padding:1px;
+    font-size:7px;
+    overflow:hidden;
+}
+
+.total{
+    width:55px;
+    min-width:55px;
+    max-width:55px;
+    font-weight:bold;
 }
 
 .total{
