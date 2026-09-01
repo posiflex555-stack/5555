@@ -10,6 +10,10 @@ printA4Btn.addEventListener("click", printA4);
 /*==================================================
         طباعة A4
 ==================================================*/
+/*==================================================
+        طباعة A4 بالطول
+        مطاعم ومطابخ سحايب ديرتي
+==================================================*/
 
 function printA4(){
 
@@ -40,54 +44,15 @@ function printA4(){
 
 <style>
 
+/*==================================================
+        A4 بالطول
+==================================================*/
+
 @page{
-    size:A4 landscape;
-    margin:8mm;
+    size:A4 portrait;
+    margin:5mm;
 }
 
-body{
-    direction:rtl;
-    font-family:Cairo,Tahoma,Arial,sans-serif;
-    margin:0;
-    padding:0;
-}
-
-h1{
-    margin:0;
-    text-align:center;
-    font-size:24px;
-}
-
-h2{
-    margin:8px 0;
-    text-align:center;
-    font-size:18px;
-}
-
-.info{
-    display:flex;
-    justify-content:space-between;
-    margin:15px 0;
-    font-size:14px;
-    font-weight:bold;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-th{
-    background:#e9e9e9;
-}
-
-th,
-td{
-    border:1px solid #000;
-    text-align:center;
-    padding:3px;
-    font-size:10px;
-}
 *{
     box-sizing:border-box;
 }
@@ -99,86 +64,214 @@ body{
     padding:0;
 }
 
-.driver{
-    width:75px;
-    min-width:75px;
-    max-width:75px;
-    font-weight:bold;
-    white-space:nowrap;
-    overflow:hidden;
+body{
+    direction:rtl;
+    font-family:Cairo,Tahoma,Arial,sans-serif;
+    color:#000;
+    background:#fff;
 }
 
-.day{
-    width:24px;
-    min-width:24px;
-    max-width:24px;
-    line-height:1.1;
+/*==================================================
+        العناوين
+==================================================*/
+
+h1{
+    margin:0;
+    padding:0;
+
+    text-align:center;
+
+    font-size:18px;
+    line-height:1.2;
 }
+
+h2{
+    margin:3px 0 6px;
+
+    text-align:center;
+
+    font-size:13px;
+    line-height:1.2;
+}
+
+/*==================================================
+        معلومات التقرير
+==================================================*/
+
+.info{
+    width:100%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin:5px 0;
+
+    font-size:9px;
+    font-weight:bold;
+}
+
+/*==================================================
+        الجدول
+==================================================*/
 
 table{
     width:100%;
     max-width:100%;
-    table-layout:fixed;
+
     border-collapse:collapse;
+
+    table-layout:fixed;
+
+    margin:0;
 }
 
 th,
 td{
     border:1px solid #000;
+
     text-align:center;
     vertical-align:middle;
+
     padding:1px;
-    font-size:7px;
+
+    font-size:6px;
+
+    line-height:1.05;
+
     overflow:hidden;
 }
 
-.total{
-    width:55px;
-    min-width:55px;
-    max-width:55px;
+/* رأس الجدول */
+
+th{
+    background:#e9e9e9;
     font-weight:bold;
 }
 
-.total{
-    background:#fafafa;
+/*==================================================
+        اسم السائق
+==================================================*/
+
+.driver{
+    width:50px;
+    min-width:50px;
+    max-width:50px;
+
     font-weight:bold;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
 }
+
+/*==================================================
+        أيام الشهر
+==================================================*/
+
+.day{
+    width:auto;
+
+    font-size:5.5px;
+
+    padding:1px 0;
+
+    line-height:1.05;
+}
+
+/*==================================================
+        أعمدة الإجماليات
+==================================================*/
+
+.total{
+    width:42px;
+    min-width:42px;
+    max-width:42px;
+
+    background:#fafafa;
+
+    font-weight:bold;
+
+    font-size:6px;
+}
+
+/*==================================================
+        إجمالي الجدول
+==================================================*/
 
 tfoot td{
-    font-size:12px;
-    font-weight:bold;
     background:#f5f5f5;
+
+    font-size:7px;
+
+    font-weight:bold;
 }
 
-
-/*==============================
-    ملخص الإجماليات
-==============================*/
+/*==================================================
+        ملخص الإجماليات
+==================================================*/
 
 .summary{
-    margin-top:15px;
+
     width:100%;
+
     display:flex;
+
     justify-content:center;
-    gap:15px;
+
+    align-items:stretch;
+
+    gap:6px;
+
+    margin-top:7px;
 }
 
 .summary-box{
-    border:2px solid #000;
-    min-width:180px;
-    padding:8px 15px;
+
+    flex:1;
+
+    border:1.5px solid #000;
+
+    padding:5px 3px;
+
     text-align:center;
-    font-size:15px;
+
+    font-size:9px;
+
     font-weight:bold;
 }
 
 .summary-box.final{
-    font-size:17px;
+    font-size:10px;
 }
 
 .summary-title{
     display:block;
-    margin-bottom:4px;
+
+    margin-bottom:2px;
+
+    font-size:8px;
+}
+
+/*==================================================
+        الطباعة
+==================================================*/
+
+@media print{
+
+    html,
+    body{
+        width:100%;
+        margin:0;
+        padding:0;
+    }
+
+    table{
+        width:100%;
+    }
+
 }
 
 </style>
@@ -223,9 +316,9 @@ tfoot td{
 `;
 
 
-/*==============================
-    أعمدة الأيام
-==============================*/
+/*==================================================
+        أعمدة الأيام
+==================================================*/
 
 for(let day = 1; day <= daysInMonth; day++){
 
@@ -237,18 +330,25 @@ for(let day = 1; day <= daysInMonth; day++){
 
 }
 
+
 html += `
 
 <th class="total">
-🥩 مجموع الذبائح
+🥩
+<br>
+الذبائح
 </th>
 
 <th class="total">
-🛵 مجموع التوصيل
+🛵
+<br>
+التوصيل
 </th>
 
 <th class="total">
-💰 الإجمالي
+💰
+<br>
+الإجمالي
 </th>
 
 </tr>
@@ -259,9 +359,9 @@ html += `
 `;
 
 
-/*==============================
-    بيانات السواقين
-==============================*/
+/*==================================================
+        بيانات السواقين
+==================================================*/
 
 drivers.forEach(driver => {
 
@@ -288,7 +388,9 @@ drivers.forEach(driver => {
             Number(data.orders || 0);
 
         meatTotal += meat;
+
         ordersTotal += orders;
+
 
         html += `
         <td class="day">
@@ -307,7 +409,9 @@ drivers.forEach(driver => {
 
 
     totalMeatAll += meatTotal;
+
     totalOrdersAll += ordersTotal;
+
 
     const driverTotal =
         meatTotal + ordersTotal;
@@ -335,7 +439,7 @@ drivers.forEach(driver => {
 
 
 /*==================================================
-        نهاية الجدول
+        الإجمالي العام
 ==================================================*/
 
 const grandTotal =
@@ -350,18 +454,18 @@ html += `
 
 <tr>
 
-<td>
-الإجمالي العام
+<td class="driver">
+الإجمالي
 </td>
 `;
 
 
-/* الخانات اليومية */
+/* الأيام */
 
 for(let day = 1; day <= daysInMonth; day++){
 
     html += `
-        <td></td>
+        <td class="day"></td>
     `;
 
 }
@@ -369,15 +473,15 @@ for(let day = 1; day <= daysInMonth; day++){
 
 html += `
 
-<td>
+<td class="total">
 ${totalMeatAll.toFixed(2)}
 </td>
 
-<td>
+<td class="total">
 ${totalOrdersAll.toFixed(2)}
 </td>
 
-<td>
+<td class="total">
 ${grandTotal.toFixed(2)}
 </td>
 
@@ -388,9 +492,9 @@ ${grandTotal.toFixed(2)}
 </table>
 
 
-<!--========================================
-        ملخص آخر الفاتورة
-=========================================-->
+<!--==================================================
+        ملخص الإجماليات
+==================================================-->
 
 <div class="summary">
 
@@ -433,7 +537,11 @@ ${grandTotal.toFixed(2)}
 
 window.onload = function(){
 
-    window.print();
+    setTimeout(function(){
+
+        window.print();
+
+    },300);
 
 };
 
@@ -454,6 +562,15 @@ window.onafterprint = function(){
     const printWindow =
         window.open("", "_blank");
 
+
+    if(!printWindow){
+
+        alert("يرجى السماح بفتح النوافذ المنبثقة للطباعة");
+
+        return;
+    }
+
+
     printWindow.document.open();
 
     printWindow.document.write(html);
@@ -461,8 +578,6 @@ window.onafterprint = function(){
     printWindow.document.close();
 
 }
-
-
 /*==================================================
         طباعة حرارية 80mm
 ==================================================*/
