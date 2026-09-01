@@ -7,9 +7,9 @@ print80Btn.addEventListener("click", print80);
 printA4Btn.addEventListener("click", printA4);
 
 /*==================================================
-        طباعة A4
-        نفس الشكل المطلوب:
-        A4 بالطول + التقرير مدور 90 درجة
+        طباعة A4 احترافية
+        A4 بالطول + التقرير مدور 90°
+        مطاعم ومطابخ سحايب ديرتي
 ==================================================*/
 
 function printA4(){
@@ -45,12 +45,12 @@ function printA4(){
 
 <meta charset="UTF-8">
 
-<title>كشف نسبة السواقين</title>
+<title>كشف نسبة السواقين الشهري</title>
 
 <style>
 
 /*==================================================
-        الورقة الأصلية A4 بالطول
+        إعداد ورقة A4
 ==================================================*/
 
 @page{
@@ -77,16 +77,22 @@ body{
 
 body{
     direction:rtl;
-    font-family:Cairo,Tahoma,Arial,sans-serif;
+
+    font-family:
+        Cairo,
+        Tahoma,
+        Arial,
+        sans-serif;
+
     color:#000;
 }
 
 
 /*==================================================
-        التقرير الداخلي
+        مساحة التقرير
 
-        حجمه Landscape
-        ثم يتم تدويره 90 درجة
+        التقرير 297 × 210
+        ثم يدور 90 درجة
 ==================================================*/
 
 .sheet{
@@ -105,38 +111,57 @@ body{
 
     transform-origin:center center;
 
+    padding:6mm;
+
     overflow:hidden;
 
-    padding:7mm;
-
+    background:#fff;
 }
 
 
 /*==================================================
-        العنوان
+        رأس التقرير
 ==================================================*/
 
-h1{
+.header{
 
-    margin:0;
+    width:100%;
 
     text-align:center;
 
+    margin-bottom:5mm;
+
+}
+
+.header h1{
+
+    margin:0;
+
     font-size:22px;
+
+    font-weight:800;
 
     line-height:1.2;
 
 }
 
-h2{
+.header h2{
 
-    margin:4px 0 7px;
+    margin:2mm 0 1.5mm;
 
-    text-align:center;
+    font-size:16px;
 
-    font-size:17px;
+    font-weight:700;
 
     line-height:1.2;
+
+}
+
+.header .year{
+
+    font-size:13px;
+
+    font-weight:700;
 
 }
 
@@ -155,11 +180,17 @@ h2{
 
     align-items:center;
 
-    margin:6px 0;
+    border-top:1px solid #000;
 
-    font-size:12px;
+    border-bottom:1px solid #000;
 
-    font-weight:bold;
+    padding:2.5mm 2mm;
+
+    margin-bottom:3mm;
+
+    font-size:11px;
+
+    font-weight:700;
 
 }
 
@@ -184,7 +215,7 @@ table{
 
 
 /*==================================================
-        جميع الخلايا
+        الخلايا
 ==================================================*/
 
 th,
@@ -196,11 +227,11 @@ td{
 
     vertical-align:middle;
 
-    padding:2px;
+    padding:1.5px;
 
     font-size:8px;
 
-    line-height:1.1;
+    line-height:1.15;
 
     overflow:hidden;
 
@@ -211,28 +242,32 @@ td{
         رأس الجدول
 ==================================================*/
 
-th{
+thead th{
 
-    background:#e9e9e9;
+    background:#eeeeee;
 
-    font-weight:bold;
+    font-weight:800;
+
+    height:11mm;
 
 }
 
 
 /*==================================================
-        عمود السائق
+        اسم السائق
 ==================================================*/
 
 .driver{
 
-    width:70px;
+    width:72px;
 
-    min-width:70px;
+    min-width:72px;
 
-    max-width:70px;
+    max-width:72px;
 
-    font-weight:bold;
+    font-size:9px;
+
+    font-weight:800;
 
     white-space:nowrap;
 
@@ -245,63 +280,85 @@ th{
 
 /*==================================================
         أيام الشهر
-
-        لا نحدد عرض ثابت
-        حتى يتوزع الـ 31 يوم
-        بالتساوي على كامل الجدول
 ==================================================*/
 
 .day{
 
     width:auto;
 
-    font-size:7px;
+    font-size:7.5px;
 
-    padding:2px 1px;
-
-    line-height:1.1;
+    padding:1px;
 
 }
 
 
 /*==================================================
-        أعمدة الإجماليات
+        إجماليات كل سائق
 ==================================================*/
 
 .total{
 
-    width:62px;
+    width:58px;
 
-    min-width:62px;
+    min-width:58px;
 
-    max-width:62px;
+    max-width:58px;
 
     background:#fafafa;
 
-    font-weight:bold;
-
     font-size:8px;
+
+    font-weight:800;
 
 }
 
 
 /*==================================================
-        إجمالي الجدول
+        خلايا الذبائح والتوصيل داخل اليوم
+==================================================*/
+
+.day div{
+
+    height:9px;
+
+    line-height:9px;
+
+    white-space:nowrap;
+
+}
+
+
+/*==================================================
+        صف الإجمالي العام
 ==================================================*/
 
 tfoot td{
 
-    background:#f5f5f5;
+    background:#e7e7e7;
 
-    font-size:10px;
+    font-size:9px;
 
-    font-weight:bold;
+    font-weight:900;
+
+    height:10mm;
 
 }
 
 
 /*==================================================
-        مربعات الإجماليات
+        عنوان الإجمالي العام
+==================================================*/
+
+tfoot .driver{
+
+    font-size:10px;
+
+}
+
+
+/*==================================================
+        منطقة الملخص
 ==================================================*/
 
 .summary{
@@ -310,56 +367,72 @@ tfoot td{
 
     display:flex;
 
+    flex-direction:row;
+
     justify-content:center;
 
     align-items:stretch;
 
-    gap:12px;
+    gap:8mm;
 
-    margin-top:9px;
-
-}
-
-
-.summary-box{
-
-    width:190px;
-
-    min-width:190px;
-
-    border:2px solid #000;
-
-    padding:7px 10px;
-
-    text-align:center;
-
-    font-size:14px;
-
-    font-weight:bold;
-
-}
-
-
-.summary-box.final{
-
-    font-size:16px;
-
-}
-
-
-.summary-title{
-
-    display:block;
-
-    margin-bottom:3px;
-
-    font-size:12px;
+    margin-top:5mm;
 
 }
 
 
 /*==================================================
-        منع أي تغيير عند الطباعة
+        مربعات الملخص
+==================================================*/
+
+.summary-box{
+
+    flex:1;
+
+    min-width:0;
+
+    border:2px solid #000;
+
+    padding:4mm 3mm;
+
+    text-align:center;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    line-height:1.2;
+
+}
+
+
+/* العنوان داخل المربع */
+
+.summary-title{
+
+    display:block;
+
+    margin-bottom:2mm;
+
+    font-size:11px;
+
+    font-weight:800;
+
+}
+
+
+/* الإجمالي النهائي */
+
+.summary-box.final{
+
+    font-size:17px;
+
+    border-width:2.5px;
+
+}
+
+
+/*==================================================
+        تحسين الطباعة
 ==================================================*/
 
 @media print{
@@ -396,39 +469,50 @@ tfoot td{
 <body>
 
 
-<!--==================================================
-        الورقة المدورة
-==================================================-->
-
 <div class="sheet">
 
 
-<h1>
-مطاعم ومطابخ سحايب ديرتي
-</h1>
+<!--==================================================
+        العنوان
+==================================================-->
+
+<div class="header">
+
+    <h1>
+        مطاعم ومطابخ سحايب ديرتي
+    </h1>
+
+    <h2>
+        كشف نسبة السواقين الشهري
+    </h2>
+
+    <div class="year">
+        السنة : ${year}
+    </div>
+
+</div>
 
 
-<h2>
-كشف نسبة السواقين الشهري
-</h2>
-
+<!--==================================================
+        معلومات التقرير
+==================================================-->
 
 <div class="info">
 
-<div>
-الشهر : ${monthName}
-</div>
+    <div>
+        الشهر : ${monthName}
+    </div>
 
-<div>
-السنة : ${year}
-</div>
-
-<div>
-عدد السواقين : ${drivers.length}
-</div>
+    <div>
+        عدد السواقين : ${drivers.length}
+    </div>
 
 </div>
 
+
+<!--==================================================
+        الجدول
+==================================================-->
 
 <table>
 
@@ -460,21 +544,21 @@ for(let day = 1; day <= daysInMonth; day++){
 html += `
 
 <th class="total">
-🥩
-<br>
-مجموع الذبائح
+    🥩
+    <br>
+    الذبائح
 </th>
 
 <th class="total">
-🛵
-<br>
-مجموع التوصيل
+    🛵
+    <br>
+    التوصيل
 </th>
 
 <th class="total">
-💰
-<br>
-الإجمالي
+    💰
+    <br>
+    الإجمالي
 </th>
 
 </tr>
@@ -501,7 +585,7 @@ drivers.forEach(driver => {
 <tr>
 
 <td class="driver">
-${driver.name}
+    ${driver.name}
 </td>
 
 `;
@@ -530,13 +614,13 @@ ${driver.name}
 
 <td class="day">
 
-<div>
-${meat ? "ذ:" + meat : ""}
-</div>
+    <div>
+        ${meat ? "ذ:" + meat : ""}
+    </div>
 
-<div>
-${orders ? "ط:" + orders : ""}
-</div>
+    <div>
+        ${orders ? "ط:" + orders : ""}
+    </div>
 
 </td>
 
@@ -557,15 +641,15 @@ ${orders ? "ط:" + orders : ""}
     html += `
 
 <td class="total">
-${meatTotal.toFixed(2)}
+    ${meatTotal.toFixed(2)}
 </td>
 
 <td class="total">
-${ordersTotal.toFixed(2)}
+    ${ordersTotal.toFixed(2)}
 </td>
 
 <td class="total">
-${driverTotal.toFixed(2)}
+    ${driverTotal.toFixed(2)}
 </td>
 
 </tr>
@@ -592,14 +676,12 @@ html += `
 <tr>
 
 <td class="driver">
-الإجمالي العام
+    الإجمالي العام
 </td>
 `;
 
 
-/*==================================================
-        الخانات اليومية
-==================================================*/
+/* الأيام */
 
 for(let day = 1; day <= daysInMonth; day++){
 
@@ -613,15 +695,15 @@ for(let day = 1; day <= daysInMonth; day++){
 html += `
 
 <td class="total">
-${totalMeatAll.toFixed(2)}
+    ${totalMeatAll.toFixed(2)}
 </td>
 
 <td class="total">
-${totalOrdersAll.toFixed(2)}
+    ${totalOrdersAll.toFixed(2)}
 </td>
 
 <td class="total">
-${grandTotal.toFixed(2)}
+    ${grandTotal.toFixed(2)}
 </td>
 
 </tr>
@@ -632,7 +714,7 @@ ${grandTotal.toFixed(2)}
 
 
 <!--==================================================
-        مربعات الإجماليات
+        ملخص الإجماليات
 ==================================================-->
 
 <div class="summary">
@@ -640,33 +722,33 @@ ${grandTotal.toFixed(2)}
 
 <div class="summary-box">
 
-<span class="summary-title">
-🥩 إجمالي الذبائح
-</span>
+    <span class="summary-title">
+        🥩 إجمالي الذبائح
+    </span>
 
-${totalMeatAll.toFixed(2)}
+    ${totalMeatAll.toFixed(2)}
 
 </div>
 
 
 <div class="summary-box">
 
-<span class="summary-title">
-🛵 إجمالي التوصيل
-</span>
+    <span class="summary-title">
+        🛵 إجمالي التوصيل
+    </span>
 
-${totalOrdersAll.toFixed(2)}
+    ${totalOrdersAll.toFixed(2)}
 
 </div>
 
 
 <div class="summary-box final">
 
-<span class="summary-title">
-💰 الإجمالي النهائي
-</span>
+    <span class="summary-title">
+        💰 الإجمالي النهائي
+    </span>
 
-${grandTotal.toFixed(2)}
+    ${grandTotal.toFixed(2)}
 
 </div>
 
@@ -727,7 +809,8 @@ window.onafterprint = function(){
     printWindow.document.close();
 
 }
-/*==================================================
+
+=================================================
         طباعة حرارية 80mm
 ==================================================*/
 
