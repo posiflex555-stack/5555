@@ -804,6 +804,10 @@ window.onafterprint = function(){
 /*==================================================
         طباعة حرارية 80mm
 ==================================================*/
+/*==================================================
+        طباعة حرارية 80mm
+        الاتجاه: تدوير 90 درجة
+==================================================*/
 
 function print80(){
 
@@ -826,7 +830,6 @@ function print80(){
 
 
     let totalMeatAll = 0;
-
     let totalOrdersAll = 0;
 
 
@@ -844,65 +847,111 @@ function print80(){
 
 <style>
 
+/*==================================================
+        إعداد الطباعة الحرارية
+==================================================*/
+
 @page{
-
     size:80mm auto;
-
     margin:0;
 }
 
 *{
-
     box-sizing:border-box;
 }
 
 html,
 body{
 
+    margin:0;
+    padding:0;
+
     width:80mm;
 
-    margin:0;
+    background:#fff;
+}
 
-    padding:0;
+body{
 
     font-family:
         Cairo,
         Tahoma,
         Arial,
         sans-serif;
+
+    direction:rtl;
+
+    color:#000;
 }
 
-body{
+
+/*==================================================
+        ورقة التقرير
+        تدوير 90 درجة
+==================================================*/
+
+.sheet{
+
+    width:80mm;
 
     padding:2mm;
 
-    direction:rtl;
+    background:#fff;
+
+    overflow:hidden;
+
+    transform:rotate(90deg);
+
+    transform-origin:top left;
+
+    margin-left:80mm;
+
+    margin-top:0;
 }
 
 
-h2{
+/*==================================================
+        العنوان
+==================================================*/
 
-    margin:0;
+.header{
 
     text-align:center;
 
-    font-size:15px;
+    margin-bottom:3mm;
+}
+
+.header h1{
+
+    margin:0;
+
+    font-size:13px;
 
     font-weight:900;
 }
 
+.header h2{
 
-h3{
-
-    margin:3px 0;
-
-    text-align:center;
+    margin:1mm 0;
 
     font-size:11px;
 
     font-weight:800;
 }
 
+.header h3{
+
+    margin:0;
+
+    font-size:10px;
+
+    font-weight:700;
+}
+
+
+/*==================================================
+        الجدول
+==================================================*/
 
 table{
 
@@ -913,47 +962,116 @@ table{
     table-layout:fixed;
 }
 
-
 th,
 td{
 
     border:1px solid #000;
 
-    font-size:5.5px;
-
-    padding:1px;
-
     text-align:center;
 
     vertical-align:middle;
+
+    padding:1px;
+
+    font-size:5px;
+
+    line-height:1.1;
 
     overflow:hidden;
 }
 
 
+/*==================================================
+        اسم السائق
+==================================================*/
+
 .driver{
 
-    width:40px;
+    width:35px;
 
-    font-weight:bold;
+    min-width:35px;
+
+    max-width:35px;
+
+    font-size:6px;
+
+    font-weight:900;
+
+    white-space:nowrap;
+
+    overflow:hidden;
 }
 
+
+/*==================================================
+        الأيام
+==================================================*/
+
+.day{
+
+    font-size:5px;
+
+    padding:1px;
+}
+
+.day div{
+
+    height:6px;
+
+    line-height:6px;
+
+    white-space:nowrap;
+}
+
+
+/*==================================================
+        الإجماليات
+==================================================*/
 
 .sum{
 
+    width:35px;
+
+    min-width:35px;
+
+    max-width:35px;
+
+    font-size:6px;
+
     font-weight:900;
+
+    background:#f5f5f5;
 }
 
+
+/*==================================================
+        الإجمالي العام
+==================================================*/
+
+tfoot td{
+
+    font-size:6px;
+
+    font-weight:900;
+
+    background:#e5e5e5;
+}
+
+
+/*==================================================
+        ملخص الإجماليات
+==================================================*/
 
 .summary{
 
-    margin-top:8px;
+    width:100%;
+
+    margin-top:4mm;
 
     border-top:2px solid #000;
 
-    padding-top:5px;
+    padding-top:2mm;
 }
-
 
 .summary-row{
 
@@ -961,25 +1079,47 @@ td{
 
     justify-content:space-between;
 
+    align-items:center;
+
     border-bottom:1px solid #000;
 
-    padding:3px 2px;
+    padding:2mm 1mm;
 
-    font-size:10px;
+    font-size:8px;
 
-    font-weight:bold;
+    font-weight:900;
 }
 
-
-.final{
-
-    font-size:12px;
+.summary-row.final{
 
     border-top:2px solid #000;
 
-    margin-top:3px;
+    font-size:10px;
 
-    padding-top:4px;
+    padding-top:3mm;
+}
+
+
+/*==================================================
+        الطباعة
+==================================================*/
+
+@media print{
+
+    html,
+    body{
+
+        width:80mm;
+
+        margin:0;
+
+        padding:0;
+    }
+
+    .sheet{
+
+        width:80mm;
+    }
 }
 
 </style>
@@ -988,18 +1128,34 @@ td{
 
 <body>
 
-<h2>
-مطاعم ومطابخ سحايب ديرتي
-</h2>
 
-<h3>
-كشف السواقين
-</h3>
+<div class="sheet">
 
-<h3>
-${monthName} ${year}
-</h3>
 
+<!--==================================================
+        رأس التقرير
+==================================================-->
+
+<div class="header">
+
+    <h1>
+        مطاعم ومطابخ سحايب ديرتي
+    </h1>
+
+    <h2>
+        كشف نسبة السواقين الشهري
+    </h2>
+
+    <h3>
+        ${monthName} - ${year}
+    </h3>
+
+</div>
+
+
+<!--==================================================
+        الجدول
+==================================================-->
 
 <table>
 
@@ -1020,7 +1176,9 @@ ${monthName} ${year}
 for(let day = 1; day <= daysInMonth; day++){
 
     html += `
-        <th>${day}</th>
+        <th class="day">
+            ${day}
+        </th>
     `;
 
 }
@@ -1030,14 +1188,20 @@ html += `
 
 <th class="sum">
 🥩
+<br>
+ذبائح
 </th>
 
 <th class="sum">
 🛵
+<br>
+توصيل
 </th>
 
 <th class="sum">
 💰
+<br>
+الإجمالي
 </th>
 
 </tr>
@@ -1072,16 +1236,16 @@ ${driver.name}
 
     for(let day = 0; day < daysInMonth; day++){
 
-        const d =
+        const data =
             driver.days[day] || {};
 
 
         const meat =
-            Number(d.meat || 0);
+            Number(data.meat || 0);
 
 
         const orders =
-            Number(d.orders || 0);
+            Number(data.orders || 0);
 
 
         meatTotal += meat;
@@ -1091,13 +1255,15 @@ ${driver.name}
 
         html += `
 
-<td>
+<td class="day">
 
-${meat || ""}
+<div>
+${meat ? "ذ:" + meat : ""}
+</div>
 
-<br>
-
-${orders || ""}
+<div>
+${orders ? "ط:" + orders : ""}
+</div>
 
 </td>
 
@@ -1137,7 +1303,7 @@ ${driverTotal.toFixed(2)}
 
 
 /*==================================================
-        الإجمالي
+        الإجمالي العام
 ==================================================*/
 
 const grandTotal =
@@ -1157,7 +1323,7 @@ html += `
 for(let day = 1; day <= daysInMonth; day++){
 
     html += `
-        <td>-</td>
+        <td class="day">-</td>
     `;
 
 }
@@ -1183,6 +1349,10 @@ ${grandTotal.toFixed(2)}
 
 </table>
 
+
+<!--==================================================
+        الملخص النهائي
+==================================================-->
 
 <div class="summary">
 
@@ -1227,6 +1397,9 @@ ${grandTotal.toFixed(2)}
 </div>
 
 
+</div>
+
+
 <script>
 
 window.onload = function(){
@@ -1235,11 +1408,23 @@ window.onload = function(){
 
         window.print();
 
-    },500);
+    },700);
+
+};
+
+
+window.onafterprint = function(){
+
+    setTimeout(function(){
+
+        window.close();
+
+    },300);
 
 };
 
 </script>
+
 
 </body>
 
@@ -1275,6 +1460,6 @@ window.onload = function(){
 
         win.print();
 
-    },500);
+    },700);
 
 }
