@@ -6,30 +6,35 @@
 print80Btn.addEventListener("click", print80);
 printA4Btn.addEventListener("click", printA4);
 
-
 /*==================================================
         طباعة A4
-==================================================*/
-/*==================================================
-        طباعة A4 بالطول
-        مطاعم ومطابخ سحايب ديرتي
+        نفس الشكل المطلوب:
+        A4 بالطول + التقرير مدور 90 درجة
 ==================================================*/
 
 function printA4(){
 
-    const monthSelect = document.getElementById("month");
-    const year = document.getElementById("year").value;
+    const monthSelect =
+        document.getElementById("month");
+
+    const year =
+        document.getElementById("year").value;
 
     const monthName =
-        monthSelect.options[monthSelect.selectedIndex].text;
+        monthSelect.options[
+            monthSelect.selectedIndex
+        ].text;
 
-    const monthNumber = Number(monthSelect.value);
+    const monthNumber =
+        Number(monthSelect.value);
 
     const daysInMonth =
         new Date(year, monthNumber, 0).getDate();
 
+
     let totalMeatAll = 0;
     let totalOrdersAll = 0;
+
 
     let html = `
 <!DOCTYPE html>
@@ -45,12 +50,12 @@ function printA4(){
 <style>
 
 /*==================================================
-        A4 بالطول
+        الورقة الأصلية A4 بالطول
 ==================================================*/
 
 @page{
     size:A4 portrait;
-    margin:5mm;
+    margin:0;
 }
 
 *{
@@ -59,64 +64,114 @@ function printA4(){
 
 html,
 body{
-    width:100%;
+    width:210mm;
+    height:297mm;
+
     margin:0;
     padding:0;
+
+    overflow:hidden;
+
+    background:#fff;
 }
 
 body{
     direction:rtl;
     font-family:Cairo,Tahoma,Arial,sans-serif;
     color:#000;
-    background:#fff;
 }
 
+
 /*==================================================
-        العناوين
+        التقرير الداخلي
+
+        حجمه Landscape
+        ثم يتم تدويره 90 درجة
+==================================================*/
+
+.sheet{
+
+    position:absolute;
+
+    width:297mm;
+    height:210mm;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-90deg);
+
+    transform-origin:center center;
+
+    overflow:hidden;
+
+    padding:7mm;
+
+}
+
+
+/*==================================================
+        العنوان
 ==================================================*/
 
 h1{
+
     margin:0;
-    padding:0;
 
     text-align:center;
 
-    font-size:18px;
+    font-size:22px;
+
     line-height:1.2;
+
 }
 
 h2{
-    margin:3px 0 6px;
+
+    margin:4px 0 7px;
 
     text-align:center;
 
-    font-size:13px;
+    font-size:17px;
+
     line-height:1.2;
+
 }
+
 
 /*==================================================
         معلومات التقرير
 ==================================================*/
 
 .info{
+
     width:100%;
 
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
 
-    margin:5px 0;
+    margin:6px 0;
 
-    font-size:9px;
+    font-size:12px;
+
     font-weight:bold;
+
 }
+
 
 /*==================================================
         الجدول
 ==================================================*/
 
 table{
+
     width:100%;
+
     max-width:100%;
 
     border-collapse:collapse;
@@ -124,39 +179,58 @@ table{
     table-layout:fixed;
 
     margin:0;
+
 }
+
+
+/*==================================================
+        جميع الخلايا
+==================================================*/
 
 th,
 td{
+
     border:1px solid #000;
 
     text-align:center;
+
     vertical-align:middle;
 
-    padding:1px;
+    padding:2px;
 
-    font-size:6px;
+    font-size:8px;
 
-    line-height:1.05;
+    line-height:1.1;
 
     overflow:hidden;
+
 }
 
-/* رأس الجدول */
-
-th{
-    background:#e9e9e9;
-    font-weight:bold;
-}
 
 /*==================================================
-        اسم السائق
+        رأس الجدول
+==================================================*/
+
+th{
+
+    background:#e9e9e9;
+
+    font-weight:bold;
+
+}
+
+
+/*==================================================
+        عمود السائق
 ==================================================*/
 
 .driver{
-    width:50px;
-    min-width:50px;
-    max-width:50px;
+
+    width:70px;
+
+    min-width:70px;
+
+    max-width:70px;
 
     font-weight:bold;
 
@@ -165,52 +239,69 @@ th{
     overflow:hidden;
 
     text-overflow:ellipsis;
+
 }
+
 
 /*==================================================
         أيام الشهر
+
+        لا نحدد عرض ثابت
+        حتى يتوزع الـ 31 يوم
+        بالتساوي على كامل الجدول
 ==================================================*/
 
 .day{
+
     width:auto;
 
-    font-size:5.5px;
+    font-size:7px;
 
-    padding:1px 0;
+    padding:2px 1px;
 
-    line-height:1.05;
+    line-height:1.1;
+
 }
+
 
 /*==================================================
         أعمدة الإجماليات
 ==================================================*/
 
 .total{
-    width:42px;
-    min-width:42px;
-    max-width:42px;
+
+    width:62px;
+
+    min-width:62px;
+
+    max-width:62px;
 
     background:#fafafa;
 
     font-weight:bold;
 
-    font-size:6px;
+    font-size:8px;
+
 }
+
 
 /*==================================================
         إجمالي الجدول
 ==================================================*/
 
 tfoot td{
+
     background:#f5f5f5;
 
-    font-size:7px;
+    font-size:10px;
 
     font-weight:bold;
+
 }
 
+
 /*==================================================
-        ملخص الإجماليات
+        مربعات الإجماليات
 ==================================================*/
 
 .summary{
@@ -223,53 +314,77 @@ tfoot td{
 
     align-items:stretch;
 
-    gap:6px;
+    gap:12px;
 
-    margin-top:7px;
+    margin-top:9px;
+
 }
+
 
 .summary-box{
 
-    flex:1;
+    width:190px;
 
-    border:1.5px solid #000;
+    min-width:190px;
 
-    padding:5px 3px;
+    border:2px solid #000;
+
+    padding:7px 10px;
 
     text-align:center;
 
-    font-size:9px;
+    font-size:14px;
 
     font-weight:bold;
+
 }
+
 
 .summary-box.final{
-    font-size:10px;
+
+    font-size:16px;
+
 }
+
 
 .summary-title{
+
     display:block;
 
-    margin-bottom:2px;
+    margin-bottom:3px;
 
-    font-size:8px;
+    font-size:12px;
+
 }
 
+
 /*==================================================
-        الطباعة
+        منع أي تغيير عند الطباعة
 ==================================================*/
 
 @media print{
 
     html,
     body{
-        width:100%;
+
+        width:210mm;
+
+        height:297mm;
+
         margin:0;
+
         padding:0;
+
+        overflow:hidden;
+
     }
 
-    table{
-        width:100%;
+    .sheet{
+
+        width:297mm;
+
+        height:210mm;
+
     }
 
 }
@@ -280,13 +395,23 @@ tfoot td{
 
 <body>
 
+
+<!--==================================================
+        الورقة المدورة
+==================================================-->
+
+<div class="sheet">
+
+
 <h1>
 مطاعم ومطابخ سحايب ديرتي
 </h1>
 
+
 <h2>
 كشف نسبة السواقين الشهري
 </h2>
+
 
 <div class="info">
 
@@ -304,6 +429,7 @@ tfoot td{
 
 </div>
 
+
 <table>
 
 <thead>
@@ -317,7 +443,7 @@ tfoot td{
 
 
 /*==================================================
-        أعمدة الأيام
+        أيام الشهر
 ==================================================*/
 
 for(let day = 1; day <= daysInMonth; day++){
@@ -336,13 +462,13 @@ html += `
 <th class="total">
 🥩
 <br>
-الذبائح
+مجموع الذبائح
 </th>
 
 <th class="total">
 🛵
 <br>
-التوصيل
+مجموع التوصيل
 </th>
 
 <th class="total">
@@ -366,26 +492,34 @@ html += `
 drivers.forEach(driver => {
 
     let meatTotal = 0;
+
     let ordersTotal = 0;
 
-    html += `
-    <tr>
 
-    <td class="driver">
-        ${driver.name}
-    </td>
-    `;
+    html += `
+
+<tr>
+
+<td class="driver">
+${driver.name}
+</td>
+
+`;
 
 
     for(let day = 0; day < daysInMonth; day++){
 
-        const data = driver.days[day] || {};
+        const data =
+            driver.days[day] || {};
+
 
         const meat =
             Number(data.meat || 0);
 
+
         const orders =
             Number(data.orders || 0);
+
 
         meatTotal += meat;
 
@@ -393,18 +527,21 @@ drivers.forEach(driver => {
 
 
         html += `
-        <td class="day">
 
-            <div>
-                ${meat ? "ذ:" + meat : ""}
-            </div>
+<td class="day">
 
-            <div>
-                ${orders ? "ط:" + orders : ""}
-            </div>
+<div>
+${meat ? "ذ:" + meat : ""}
+</div>
 
-        </td>
-        `;
+<div>
+${orders ? "ط:" + orders : ""}
+</div>
+
+</td>
+
+`;
+
     }
 
 
@@ -419,21 +556,21 @@ drivers.forEach(driver => {
 
     html += `
 
-    <td class="total">
-        ${meatTotal.toFixed(2)}
-    </td>
+<td class="total">
+${meatTotal.toFixed(2)}
+</td>
 
-    <td class="total">
-        ${ordersTotal.toFixed(2)}
-    </td>
+<td class="total">
+${ordersTotal.toFixed(2)}
+</td>
 
-    <td class="total">
-        ${driverTotal.toFixed(2)}
-    </td>
+<td class="total">
+${driverTotal.toFixed(2)}
+</td>
 
-    </tr>
+</tr>
 
-    `;
+`;
 
 });
 
@@ -455,12 +592,14 @@ html += `
 <tr>
 
 <td class="driver">
-الإجمالي
+الإجمالي العام
 </td>
 `;
 
 
-/* الأيام */
+/*==================================================
+        الخانات اليومية
+==================================================*/
 
 for(let day = 1; day <= daysInMonth; day++){
 
@@ -493,10 +632,11 @@ ${grandTotal.toFixed(2)}
 
 
 <!--==================================================
-        ملخص الإجماليات
+        مربعات الإجماليات
 ==================================================-->
 
 <div class="summary">
+
 
 <div class="summary-box">
 
@@ -530,6 +670,10 @@ ${grandTotal.toFixed(2)}
 
 </div>
 
+
+</div>
+
+
 </div>
 
 
@@ -541,9 +685,10 @@ window.onload = function(){
 
         window.print();
 
-    },300);
+    },500);
 
 };
+
 
 window.onafterprint = function(){
 
@@ -552,6 +697,7 @@ window.onafterprint = function(){
 };
 
 </script>
+
 
 </body>
 
@@ -565,9 +711,12 @@ window.onafterprint = function(){
 
     if(!printWindow){
 
-        alert("يرجى السماح بفتح النوافذ المنبثقة للطباعة");
+        alert(
+            "يرجى السماح بفتح النوافذ المنبثقة للطباعة"
+        );
 
         return;
+
     }
 
 
