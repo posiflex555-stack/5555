@@ -372,3 +372,17 @@ MODAL
 }
 
 }
+/* منع تحديد ونسخ النصوص */
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* السماح بالكتابة داخل الحقول */
+input,
+textarea {
+    -webkit-user-select: text;
+    user-select: text;
+}
