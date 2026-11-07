@@ -443,3 +443,19 @@ clearDataBtn.onclick = function(){
     alert("✅ تم تصفير جميع بيانات الشهر");
 
 };
+// منع النسخ والقص
+document.addEventListener("copy", e => e.preventDefault());
+document.addEventListener("cut", e => e.preventDefault());
+
+// منع القائمة عند الضغط المطول
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+// منع اختصارات النسخ والتحديد
+document.addEventListener("keydown", e => {
+    if (
+        (e.ctrlKey || e.metaKey) &&
+        ["c", "x", "a"].includes(e.key.toLowerCase())
+    ) {
+        e.preventDefault();
+    }
+});
